@@ -1,20 +1,22 @@
-🚀 Instrumenting a Flask Application with OpenTelemetry (Self-Hosted SigNoz) 🎯
+# 🚀 Instrumenting a Flask Application with OpenTelemetry (Self-Hosted SigNoz) 🎯
 
 This guide provides step-by-step instructions to instrument a Flask application using OpenTelemetry for logging, tracing, and metrics, specifically for a self-hosted SigNoz setup.
 
 ---
 
-📝 1. Configure Logging in `app.py`
+## 📝 1. Configure Logging in `app.py`
 
 Add the following lines to your `app.py` to enable logging to the console:
 
 ```python
 import logging
 
+# The default logging level in Python is WARNING.
+# To send all logs to SigNoz, change the default log level to DEBUG.
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-🎁 Bonus: Log Both to File & Console
+### 🎁 Bonus: Log Both to File & Console
 To log both to the console and a file, use:
 
 ```python
@@ -42,7 +44,7 @@ venv\Scripts\activate      # On Windows
 
 ---
 
-📦 3. Install Dependencies
+## 📦 3. Install Dependencies
 
 Install the required Python packages:
 
@@ -54,7 +56,7 @@ pip install opentelemetry-exporter-otlp
 
 ---
 
-⚡ 4. Run OpenTelemetry Bootstrap
+## ⚡ 4. Run OpenTelemetry Bootstrap
 
 Execute the following command to install necessary dependencies:
 
@@ -64,7 +66,7 @@ opentelemetry-bootstrap -a install
 
 ---
 
-🚀 5. Run Your Application with OpenTelemetry Instrumentation for SigNoz
+## 🚀 5. Run Your Application with OpenTelemetry Instrumentation for SigNoz
 
 Replace `<APP-NAME>` with your application's name and ensure `<OTLP_ENDPOINT>` points to your self-hosted SigNoz instance (default is `http://localhost:4317` for gRPC or `http://localhost:4318` for HTTP):
 
@@ -84,7 +86,7 @@ OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 
 ---
 
-⚠️ 6. Prevent Auto-Reload Issues (Optional)
+## ⚠️ 6. Prevent Auto-Reload Issues (Optional)
 
 Auto-reload on code changes can break OpenTelemetry instrumentation. To prevent this, disable debug mode in your Flask app:
 
